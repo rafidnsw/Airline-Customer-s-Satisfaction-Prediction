@@ -59,6 +59,32 @@ Lastly, from our analysis we found that there are several services that giving a
 To put it simply, this chart tell us the chances (in percentage) the customer will submit 'satisfied' value in their satisfaction survey. As we can see, this 3 rating category have the most significant improvement from value rating of 3 to value rating of 5. Lets take the `Seat comfort` rating for an example, from the chart we can infer that the probability of customer with value rating of 3 saying they are 'satisfied' was around 45%. However, if we managed to increase their rating value to 5, we can see an almost 100% probability of saying 'satisfied'. This chart can be our guidance to take our way forward of the service improvement for our business recommendation.
 
 ### Modelling
-After done with all the processing and EDA, we now have our data prepared to enter the modelling stage. In this stage we model the prediction using several classification algorithms such as LogisticRegression, DecisionTree, RandomForest & XGBoost. Metrics evaluation that we use is F1-score since we want to truly see our customer that actually satisfied or dissatisfied from our current services.
+After finish all the work on the data pre-processing and gain in-depth knowledge and insights regarding the data, we continue to build our classification model. On this project, we tested several classification algorithm. Those algorithms are:
+  * Logistic Regression
+  * Decision Tree
+  * K-Nearest Neighbors
+  * RandomForest
+  * XGBoost
+
+Since our objective in this project was about improving the rating and services of the airline, we would like to comprehend most of the positive and negative outcomes from both our 'satisfied' and 'dissatisfied' customer. Therefore, we decided to choose the F1-score for our evaluation metric. This choice was taken since F1-score pretty much combine the intuition of precision and recall score in one formula.
+
+![Model Selection](https://user-images.githubusercontent.com/85340491/222952518-7e31bf8f-0789-4bbf-9d20-fdb6f42e3da3.png)
+
+Based on our model results, we got quite same score between RandomForest and XGBoost algorithm. In this case, we prefer to proceed with RandomForest over XGBoost because the basics of the algorithm itself. XGBoost provide us result with a sequential type model thus it is more prone to noises than RandomForest.
+
+After finishing with our model, we try to extract feature importance from our model. We discover the top 3 features that most important in our model are `Inflight entertainment`, `Seat comfort`, & `Ease of Online booking`. These 3 features are in-line with our analysis back on the EDA section. Therefore, we are confident to provide business recommendation based on this result.
+
+![Feature importance](https://user-images.githubusercontent.com/85340491/222953339-67685d06-c218-4b27-962f-8a82622efb7b.png)
+
 ### Business Recommendation
-From all the steps we took in this project, the final output is to give recommendation based on our findings in this project. There are several things that we recommend, mainly about upgrading the services in the airline. In this section we also tried to simulate the impacts that our recommendation can give to the company.
+Based on our predictive model, we highly recommend for the business team to focus giving improvement on these 3 services that impactful towards overall rating and satisfaction survey:
+  1. Seat comfort: Renewing the airplane seat, replacing them with more ergonomic bench model and paying attention to body posture when sitting
+  2. Inflight entertainment: Support output like headset and monitor, periodically update the options existing entertainment such as movies, music or other media services
+  3. Ease of Online Booking: Create an easy-to-understand interface so that users don't feel bothered and having more efficient time when making a booking
+To build up more confidence on our recommendation, we also create an impact simulation as shown below:
+
+![Impact model](https://user-images.githubusercontent.com/85340491/222955088-fb9c2bda-2074-4db3-83af-b27d1212bd94.png)
+
+Here we can see there are 3 cases we try to simulate and also on the table shown, we can see there are 6 category services take as samples where in each cases we improved 3 of 6 category and assume the customer rating narrowed to the value of 4 and 5 only. The first case was the general implementation where the business recommendation applied to **every** `Class` and it is assumed we succesfully increase the rating of `Inflight entertainment`, `Seat comfort`, and `Ease of Online booking` to the value rating of 4 and 5. Next one, is where we implement the improvement on random services such as `Departure/Arrival time convenient`, `Gate location`, & `Inflight wifi service` and succesfully provide value rating of 4 and 5 on those services. The last case was to implement the business recommendation only on 'Eco' & 'Eco Plus' `Class`.
+
+With the assumption of airline customer number in Indonesia was 10.000 per day, we can achieve different results within 1 week. From the chart shown the best outcome is when we implement the business recommendation in Eco-focused segment where 15.5% satisfaction level increasement can be expected. The general implementation also giving significant level of increase in satisfaction however it will cost the company more since all type of classes being improved. For the random improvement, it is shown there are no progressing on the satisfaction level increase, even worse the satisfaction level shows a decrease of 0.3% in value.
