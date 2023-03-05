@@ -1,4 +1,4 @@
-# Airline-Customer-s-Satisfaction-Prediction
+# Airline Customers Satisfaction Prediction: a machine learning project
 Final Project of my data science course in Rakamin Academy. The project regarding creation of machine learning prediction model through supervised learning: classification
 
 Data used in this project can be categorized into two category, `personal information` and `ratings`. The project consists of several methodically steps in creating machine learning model:
